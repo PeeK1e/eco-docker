@@ -2,6 +2,8 @@ version: '3.3'
 
 services:
     eco-server:
+#       if you are running on a vServer you might ned this:
+#       network_mode: "host"
         build: .
         ports:
             - "3000:3000/tcp"
@@ -9,7 +11,7 @@ services:
             - "3001:3001/tcp"
         volumes:
 #            modify your volumes/paths here
-#            - /pathOrVolume/to/Storage/:/eco/Storage/
+#           - eco-configs:/eco/Configs
             - eco-world:/eco/Storage
             - eco-logs:/eco/Logs
         restart: 
@@ -19,4 +21,7 @@ services:
 volumes:
     eco-world:
     eco-logs:
+#   config volume you will need to create:
+#   eco-configs:
+#       external: true
         
